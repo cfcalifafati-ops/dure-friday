@@ -1,0 +1,11 @@
+@model BorrowRecord
+@{ ViewData["Title"] = "Delete Borrow Record"; }
+<h1>Delete Borrow Record</h1>
+<div class="alert alert-warning">Are you sure you want to delete this borrowing record?</div>
+<p><strong>Book:</strong> @Model.Book?.Title</p>
+<p><strong>Member:</strong> @Model.Member?.FullName</p>
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="BorrowRecordId" />
+    <button class="btn btn-danger">Delete</button>
+    <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+</form>
