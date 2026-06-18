@@ -1,0 +1,25 @@
+@model IEnumerable<Book>
+@{ ViewData["Title"] = "Books"; }
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Books</h1>
+    <a class="btn btn-primary" asp-action="Create">Add Book</a>
+</div>
+<form method="get" class="row g-2 mb-3">
+    <div class="col-md-10"><input name="search" value="@ViewBag.Search" class="form-control" placeholder="Search title, author or ISBN" /></div>
+    <div class="col-md-2"><button class="btn btn-outline-secondary w-100">Search</button></div>
+</form>
+<table class="table table-bordered table-striped">
+<thead><tr><th>Title</th><th>Author</th><th>ISBN</th><th>Category</th><th>Qty</th><th></th></tr></thead>
+<tbody>
+@foreach (var item in Model) {
+<tr>
+    <td>@item.Title</td><td>@item.Author</td><td>@item.ISBN</td><td>@item.Category</td><td>@item.Quantity</td>
+    <td>
+        <a asp-action="Details" asp-route-id="@item.BookId">Details</a> |
+        <a asp-action="Edit" asp-route-id="@item.BookId">Edit</a> |
+        <a asp-action="Delete" asp-route-id="@item.BookId">Delete</a>
+    </td>
+</tr>
+}
+</tbody>
+</table>

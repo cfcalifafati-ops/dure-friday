@@ -1,0 +1,9 @@
+@model Member
+@{ ViewData["Title"] = "Add Member"; }
+<h1>Add Member</h1>
+<form asp-action="Create" method="post">
+    @await Html.PartialAsync("_MemberForm", Model)
+    <button class="btn btn-primary">Save</button>
+    <a class="btn btn-secondary" asp-action="Index">Back</a>
+</form>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }
